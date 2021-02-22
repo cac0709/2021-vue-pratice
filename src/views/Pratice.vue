@@ -1,8 +1,8 @@
 <template>
   <div class="pratice">
-    <h1>Pratice</h1>
-     
+    <h1>Pratice</h1>   
      <Praticetext price="100" qulity="10" />
+     
 
      
   </div>
@@ -16,6 +16,7 @@ export default {
   components: {
     Praticetext
   },
+
 
 
 }
