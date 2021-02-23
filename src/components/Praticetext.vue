@@ -1,22 +1,60 @@
 <template>
-  <div class="praticetext">
-
-   <h3>練習4567890</h3>
-   <h3>
-     單價:{{ price }}元,
-     數量:{{ qulity }}個,
-     總價:{{ price*qulity }}元 
-   </h3>
-   <!-----V-MODEL綁定-------->
+  
+   <!--
+     <div class="praticetext">
+   -----V-MODEL綁定--------
    <p>假設 1 日幣 = 0.278 台幣</p>
   <div>台幣 <input type="text" v-model="twd" v-on:input="twd2jpy"></div>
   <div>日幣 <input type="text" v-model="jpy" v-on:input="jpy2twd"></div>
   </div>
+  -->
+  <!--輸入-->
+  <div id ="insert">
+    <p>鉛筆:</p> 
+    <input type="text" v-model.trim="pen" name="pen" >根
+    <p>筆記本:</p>
+    <input type="text" v-model.trim="notebook" name="notebook" >本
+    <p>礦泉水:</p>
+    <input type="text" v-model.trim="waterbottle" name="waterbottle" >瓶
+     <p>備註:</p>
+       <textarea name="others" v-model.trim="others" rows="5" cols="20" ></textarea>
+  </div>
+<!--勾選-->
+
+<!--v-for-->
+ <div id ="select">
+   <p>部門</p>
+   <select v-model="department" name="department">
+     <option v-for="(item, index) in member2" :key="index">{{ item }}</option>
+   </select>
+
+ </div>
+
+ <div id="radio" >
+    <p>緊急程度</p>
+    <p><input type="radio" name="interest"  value="很急" v-model="emergency" > 很急</p>
+    <p><input type="radio" name="interest"  value="普通" v-model="emergency"> 普通</p>
+    <p><input type="radio" name="interest" value="慢慢來" v-model="emergency"> 慢慢來</p>
+    
+ </div>
+   
+<div id="btn">
+   <input type="submit" value="提交表單">
+</div>
+
+    
   
-  <div>
-     鉛筆: 
-    <input type="text" v-model.trim="pen" >根
-    <p>鉛筆共{{ pen }} 根</p> 
+
+
+
+  <div id ="show"> 
+    <p>鉛筆: {{ pen }}根</p> 
+        <p>筆記本: {{ notebook }}本</p> 
+            <p>礦泉水: {{ waterbottle }}瓶</p> 
+                <p>備註: {{ others }}</p> 
+                   <p>部門: {{ department }}</p> 
+                   <p>緊急程度: {{ emergency }}</p> 
+
   </div>
 
 </template>
@@ -27,7 +65,14 @@
       return {
         twd:'1',
         jpy:'0.278',
-        pen:''
+        pen:'',
+        notebook:'',
+        waterbottle:'',
+        others:'其他事項....',
+        department:'請選擇部門',
+        emergency:'',
+        member2:['出納組','資訊中心','人文組']
+     
       }
   },
     methods: {
@@ -49,6 +94,29 @@
 
 
 <style scoped lang="scss">
+#show {
+  position:relative;
+  left: 900px;
+  top:-700px;
+
+}
+#select{
+  position: relative;
+  left:250px;
+  top:-420px;
+}
+#radio{
+  position: relative;
+  left:250px;
+  top:-400px;
+
+}
+#btn{
+   position: relative;
+  left:250px;
+  top:-400px;
+}
+
 h3 {
   margin: 60px 0 0;
 }
@@ -64,8 +132,10 @@ a {
   color: #42b983;
 }
 p{
-  color: red;
+  color: blue;
   margin-right: 4;
   position: right;
+  font-size:20px
 }
+
 </style>
