@@ -5,14 +5,20 @@
    <h3>
      單價:{{ price }}元,
      數量:{{ qulity }}個,
-     總價:{{ price*qulity }}元
-     
+     總價:{{ price*qulity }}元 
    </h3>
+   <!-----V-MODEL綁定-------->
    <p>假設 1 日幣 = 0.278 台幣</p>
   <div>台幣 <input type="text" v-model="twd" v-on:input="twd2jpy"></div>
   <div>日幣 <input type="text" v-model="jpy" v-on:input="jpy2twd"></div>
-
   </div>
+  
+  <div>
+     鉛筆: 
+    <input type="text" v-model.trim="pen" >根
+    <p>鉛筆共{{ pen }} 根</p> 
+  </div>
+
 </template>
 <script>
  export default {
@@ -20,7 +26,8 @@
   data() {
       return {
         twd:'1',
-        jpy:'0.278'
+        jpy:'0.278',
+        pen:''
       }
   },
     methods: {
@@ -43,7 +50,7 @@
 
 <style scoped lang="scss">
 h3 {
-  margin: 40px 0 0;
+  margin: 60px 0 0;
 }
 ul {
   list-style-type: none;
@@ -55,5 +62,10 @@ li {
 }
 a {
   color: #42b983;
+}
+p{
+  color: red;
+  margin-right: 4;
+  position: right;
 }
 </style>
